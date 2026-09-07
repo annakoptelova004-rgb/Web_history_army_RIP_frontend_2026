@@ -1,0 +1,394 @@
+@font-face {
+    font-family: "Sangyo";
+    src: url("/static/fonts/Sangyo-Regular.otf") format("opentype");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #d9dadd;
+    font-family: "Sangyo", sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+
+/*окно телефона*/
+
+.phone {
+    position: relative;
+
+    width: 480px;
+    height: 928px;
+
+    background: #ffffff;
+
+    border-radius: 60px;
+
+    overflow: hidden;
+}
+
+
+/*основная обасть*/
+
+.page {
+    width: 100%;
+    height: 100%;
+
+    padding: 40px;
+
+    padding-bottom: 110px;
+}
+
+
+/*заголовк*/
+
+h1 {
+    margin: 0 0 30px 0;
+
+    font-size: 40px;
+    font-weight: 400;
+}
+
+
+/*поиск*/
+
+.search-form {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+.search-form input {
+    width: 270px;
+    height: 32px;
+
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #d9d9d9;
+
+    font-family: "Sangyo", sans-serif;
+    font-size: 16px;
+}
+
+.search-form button {
+    width: 100px;
+    height: 32px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #ed1019;
+    color: white;
+
+    font-family: "Sangyo", sans-serif;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+/*карточки*/
+
+.troops {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.troop-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 245px;
+    border-radius: 30px;
+    background: #d9d9d9;
+    text-decoration: none;
+    color: #fafbf8;
+    overflow: hidden;
+}
+.troop-card > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.troop-card__text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 15px;
+    z-index: 2;
+}
+
+.troop-card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.troop-card span {
+    font-size: 16px;
+}
+
+
+/*нижняяя навигация*/
+
+.bottom-nav {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+
+    background: #ffffff;
+}
+
+.bottom-nav a {
+    color: #000000;
+
+    text-decoration: none;
+
+    font-family: "Sangyo", sans-serif;
+    font-size: 18px;
+}
+
+.bottom-nav a:hover {
+    color: #ed1019;
+}
+
+/*лайки*/
+.likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    margin-top: 6px;
+    
+}
+
+.likes img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Лента */
+
+.feed {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.feed-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: - 1;
+}
+
+.feed-likes {
+    position: absolute;
+    left: 20px;
+    bottom: 275px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.feed-likes img {
+    width: 20px;
+    height: 20px;
+    position: static;
+     object-fit: contain;
+}
+.feed-likes span {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.next-button {
+    position: absolute;
+
+    right: 25px;
+    bottom: 275px;
+
+    width: 150px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background: #ed1019;
+    color: white;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    z-index: 2;
+}
+.next-button img {
+    width: 35px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.feed-info {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    bottom: 100px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    z-index: 2;
+}
+
+.feed-info h1 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.feed-info p {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+}
+
+.feed-info a {
+    color: #000;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.phone .bottom-nav {
+    z-index: 3;
+}
+
+/* Страница добавления */
+
+.add-page {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    padding-bottom: 110px;
+    overflow-y: auto;
+}
+
+.add-page h1 {
+    margin: 0 0 35px 0;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.add-media {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.add-media__box {
+    width: 185px; 
+    height: 130px; 
+    background: #ffffff;
+    border: 3px solid #ed1019;
+    border-radius: 20px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 18px; 
+}
+
+.add-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.add-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.add-field label {
+    font-size: 18px;
+}
+
+.add-input {
+    width: 100%; 
+    min-height: 38px; 
+    padding: 8px 12px; 
+    background: #d9d9d9; 
+    border: none;
+    border-radius: 8px; 
+    font-size: 17px;
+    font-family: "Sangyo", sans-serif;
+    outline: none;
+}
+
+.add-input--description {
+    min-height: 65px;
+    resize: none;
+}
+
+.add-status {
+    margin-top: 5px;
+    font-size: 18px;
+}

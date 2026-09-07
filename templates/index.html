@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Рода войск</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+</head>
+
+<body>
+
+    <div class="phone">
+
+        <main class="page">
+
+            <h1>Рода войск</h1>
+
+            <form class="search-form" action="/hello" method="GET">
+                <input
+                    type="text"
+                    name="speed"
+                    placeholder="скорость на местности" value="{{ .speed }}"
+                >
+                
+                <button type="submit">найти</button>
+            </form>
+
+            <section class="troops">
+
+                {{ range .orders }}
+                <a class="troop-card" href="/lenta/{{ .Order.ID }}">
+                       <img src="http://localhost:9000/media/{{ .Order.Image }}" alt="{{ .Order.Title }}">
+
+                 <div class="troop-card__text">
+                  <h2>{{ .Order.Title }}</h2>
+                 <span class="likes">
+    <img src="/static/icons/Vector_liki.svg" alt="Лайк">
+    <span>{{ .LikesCount }}</span>
+</span>
+                </div>
+             </a>
+            {{ end }}
+
+            </section>
+
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="/lenta">ЛЕНТА</a>
+            <a href="/add">ДОБАВЛЕНИЕ</a>
+            <a href="/hello">ПЛИТКА</a>
+        </nav>
+
+    </div>
+
+</body>
+
+</html>
