@@ -1,0 +1,2 @@
+# Web_history_army_RIP_frontend_2026
+Разработка интернет приложений 2026
