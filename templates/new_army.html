@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление рода войск</title>
+    <link rel="stylesheet" href="/static/styles/style_army.css">
+</head>
+
+<body>
+
+<div class="phone">
+
+    <main class="add-page">
+
+        <h1>Добавление</h1>
+
+        <div class="add-media__box">
+
+            <span class="media-title">+ изображение</span>
+
+            <div class="file-row">
+                <label class="file-button">
+                    <input type="file" accept="image/*">
+                </label>
+
+                <span class="file-name"></span>
+            </div>
+
+        </div>
+
+        <div class="add-media__box">
+
+            <span class="media-title">+ видео</span>
+
+            <div class="file-row">
+                <label class="file-button">
+                    <input type="file" accept="video/*">
+                </label>
+
+                <span class="file-name"></span>
+            </div>
+
+        </div>
+
+        {{ if .hasDraft }}
+
+        <form class="add-fields" method="POST" action="/publish_army">
+
+            <input type="hidden"
+                   name="id"
+                   value="{{ .draft.ID }}">
+
+            <div class="add-field">
+                <label>Название</label>
+
+                <input class="add-input"
+                       type="text"
+                       name="name"
+                       value="{{ .draft.Name }}"
+                       readonly>
+            </div>
+
+            <div class="add-field">
+                <label>Описание</label>
+
+                <textarea class="add-input add-input--description"
+                          name="description"
+                          required>{{ .draft.Description }}</textarea>
+            </div>
+
+            <div class="add-field">
+                <label>Скорость по равнине, км/день</label>
+
+                <input class="add-input"
+                       type="number"
+                       name="speed_plain"
+                       value="{{ .draft.SpeedPlain }}"
+                       min="0"
+                       required>
+            </div>
+
+            <div class="add-field">
+                <label>Скорость в горах, км/день</label>
+
+                <input class="add-input"
+                       type="number"
+                       name="speed_mountains"
+                       value="{{ .draft.SpeedMountains }}"
+                       min="0"
+                       required>
+            </div>
+
+            <div class="add-field">
+                <label>Скорость в лесу, км/день</label>
+
+                <input class="add-input"
+                       type="number"
+                       name="speed_forest"
+                       value="{{ .draft.SpeedForest }}"
+                       min="0"
+                       required>
+            </div>
+
+            <div class="add-field">
+                <label>Скорость у реки, км/день</label>
+
+                <input class="add-input"
+                       type="number"
+                       name="speed_river"
+                       value="{{ .draft.SpeedRiver }}"
+                       min="0"
+                       required>
+            </div>
+
+            <div class="add-field">
+                <label>Питание, кг/день</label>
+
+                <input class="add-input"
+                       type="number"
+                       name="food"
+                       value="{{ .draft.Food }}"
+                       min="0"
+                       required>
+            </div>
+
+            <button class="add-button" type="submit">
+                ОПУБЛИКОВАТЬ
+            </button>
+
+        </form>
+
+        {{ else }}
+
+        <form class="add-fields"
+              method="POST"
+              action="/new_army">
+
+            <div class="add-field">
+                <label>Название</label>
+
+                <input class="add-input"
+                       type="text"
+                       name="name"
+                       required>
+            </div>
+
+            <button class="add-button" type="submit">
+                ДАЛЕЕ
+            </button>
+
+        </form>
+
+        {{ end }}
+
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="/army">ЛЕНТА</a>
+        <a href="/new_army">ДОБАВЛЕНИЕ</a>
+        <a href="/military_branch">ПЛИТКА</a>
+    </nav>
+
+</div>
+
+</body>
+
+</html>

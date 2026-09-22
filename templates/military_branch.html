@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Рода войск</title>
+    <link rel="stylesheet" href="/static/styles/style_army.css">
+</head>
+
+<body>
+
+    <div class="phone">
+
+        <main class="page">
+
+            <h1>Рода войск</h1>
+
+            <form class="search-form" action="/military_branch" method="GET">
+                <input
+                    type="range"
+                    name="speed"
+                    min="1"
+                    max="10"
+                    value="{{ if .speed }}{{ .speed }}{{ else }}1{{ end }}"
+                >
+
+                <span class="speed-value">
+                    Скорость: {{ if .speed }}{{ .speed }}{{ else }}1{{ end }} км/день
+                </span>
+
+                <button type="submit">НАЙТИ</button>
+            </form>
+
+            <section class="troops">
+
+                {{ range .militaryBranches }}
+
+                <div>
+
+                    <a class="troop-card" href="/army?id={{ .MilitaryBranch.ID }}">
+
+                        <img
+                           src="{{ if .MilitaryBranch.ImageURL }}http://localhost:9000/media/{{ .MilitaryBranch.ImageURL }}{{ else }}/static/defaults/default_army.png{{ end }}"
+                            alt="{{ .MilitaryBranch.Name }}"
+                        >
+
+                        <div class="troop-card__text">
+
+                            <h2>{{ .MilitaryBranch.Name }}</h2>
+
+                            <span class="likes">
+                                <img src="/static/icons/Vector_liki.svg" alt="Лайк">
+                                <span>{{ .LikesCount }}</span>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                    <form method="POST" action="/delete_army">
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="{{ .MilitaryBranch.ID }}"
+                        >
+                        <button type="submit" class="delete-button">УДАЛИТЬ</button>
+                    </form>
+
+</div>
+                {{ end }}
+
+            </section>
+
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="/army">ЛЕНТА</a>
+            <a href="/new_army">ДОБАВЛЕНИЕ</a>
+            <a href="/military_branch">ПЛИТКА</a>
+        </nav>
+
+    </div>
+
+</body>
+
+</html>

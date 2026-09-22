@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Армия</title>
+    <link rel="stylesheet" href="/static/styles/style_army.css">
+</head>
+
+<body>
+
+<div class="phone">
+    {{ if .error }}
+
+    <div class="feed">
+        <div class="feed-info">
+            <h1>{{ .error }}</h1>
+        </div>
+    </div>
+
+    {{ else }}
+
+    <div class="feed">
+
+        <video class="feed-video" autoplay muted loop playsinline>
+            <source
+               src="{{ if .militaryBranch.VideoURL }}http://localhost:9000/media/{{ .militaryBranch.VideoURL }}{{ else }}/static/defaults/default_armys.mp4{{ end }}"
+               type="video/mp4"
+            >
+        </video>
+
+        <div class="feed-likes">
+            <img src="/static/icons/Vector_liki.svg" alt="Лайк">
+            <span>{{ .likesCount }}</span>
+        </div>
+
+        <a
+            class="next-button"
+            href="/army?id={{ .militaryBranch.ID }}&next=true"
+        >
+            <span>СЛЕДУЮЩИЙ</span>
+            <img src="/static/icons/strela.png" alt="">
+        </a>
+
+             <div class="feed-info">
+
+                    <h1>{{ .militaryBranch.Name }}</h1>
+
+                     <p> Скорость по {{ .militaryBranch.Terrain }}: {{ .militaryBranch.Speed }} км/день </p>
+
+                     <p>
+                         Питание: {{ .militaryBranch.Food }} кг/день
+                    </p>
+
+                    <span class="feed-more">ЕЩЁ</span>  
+
+                </div>
+     
+
+    </div>
+    
+
+    {{ end }}
+
+    <nav class="bottom-nav">
+        <a href="/army">ЛЕНТА</a>
+        <a href="/new_army">ДОБАВЛЕНИЕ</a>
+        <a href="/military_branch">ПЛИТКА</a>
+    </nav>
+
+</div>
+
+</body>
+
+</html>
