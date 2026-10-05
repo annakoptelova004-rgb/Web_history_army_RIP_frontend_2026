@@ -354,15 +354,29 @@ h1 {
     border: 3px solid #ed1019;
     border-radius: 30px;
     color: #ffffff;
-    display: flex;  
-    flex-direction: column;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    font-size: 18px;
     overflow: hidden;
     font-family: "Sangyo", sans-serif;
+}
 
+.add-media__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+}
+
+.add-media__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+    filter: blur(2px);
 }
 .media-title {
     font-size: 20px;
