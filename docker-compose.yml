@@ -1,0 +1,15 @@
+
+services:
+  app:
+    container_name: army-march-react
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_TARGET: http://host.docker.internal:8081
+    command: npm run dev
